@@ -1,0 +1,27 @@
+﻿<Window x:Class="DataTableBindingTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataTableBindingTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="myTmpl" DataType="local:Auftrag">
+            <StackPanel>
+                <Label Content="{Binding ID, FallbackValue=ID_FALLBACK}"></Label>
+                <Label Content="{Binding Soll, FallbackValue=SOLL_FALLBACK}"></Label>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <UniformGrid Columns="1">
+       
+            <Button Click="Button_Click">Load</Button>
+       
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <DataGrid Name="MyDataGrid" ItemsSource="{Binding}" AutoGeneratingColumn="MyDataGrid_AutoGeneratingColumn" >
+                </DataGrid>
+            </ScrollViewer>
+
+    </UniformGrid>
+</Window>
